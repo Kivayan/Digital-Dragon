@@ -149,7 +149,6 @@
     <Compile Include="Assets\Scripts\ExpCollector.cs" />
     <Compile Include="Assets\Scripts\Experience.cs" />
     <Compile Include="Assets\Scripts\Fire_Camp.cs" />
-    <Compile Include="Assets\Scripts\FootSteps.cs" />
     <Compile Include="Assets\Scripts\Fracture.cs" />
     <Compile Include="Assets\Scripts\FractureDestroyer.cs" />
     <Compile Include="Assets\Scripts\GameOver.cs" />
@@ -167,6 +166,8 @@
     <Compile Include="Assets\Scripts\Quest_Controler.cs" />
     <Compile Include="Assets\Scripts\Questy\First_Quest.cs" />
     <Compile Include="Assets\Scripts\Samouczek.cs" />
+    <Compile Include="Assets\Scripts\SoundManagement\FootSteps.cs" />
+    <Compile Include="Assets\Scripts\SoundManagement\SoundManager.cs" />
     <Compile Include="Assets\Scripts\Testing\StamniaTester.cs" />
     <Compile Include="Assets\Scripts\UI_Script.cs" />
   </ItemGroup>

@@ -65,7 +65,7 @@ public class AnimatorHandler : MonoBehaviour
     {
         if (!attacks.Contains(attackName))
         {
-            throw new Exception("Provided attack name is not valid " + attackName);
+            throw new Exception("Provided attack name is not valid:  " + attackName);
         }
         anim.SetTrigger(attackName);
     }
