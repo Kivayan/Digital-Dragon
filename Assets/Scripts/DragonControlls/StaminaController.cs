@@ -1,14 +1,21 @@
 ﻿using UnityEngine;
 
-public class StaminaController
+public class StaminaController : MonoBehaviour
 {
-    private float maxStamina;
-    private float currentStamina;
-    private float refillRatePerSec;
+    public UI_Script UI;
 
-    private bool allowRefill;
+    [SerializeField] private float maxStamina;
+    [SerializeField] private float currentStamina;
+    [SerializeField] private float refillRatePerSec;
+
+    private bool allowRefill = true;
     private float tmpRefillRate = 1;
 
+    private void Update()
+    {
+        //update UI Graphics
+        UI.UpdateStaminaGraphic(currentStamina / maxStamina);
+    }
 
     /// <summary>
     /// Substract from stamina as long as called. while called Refill will be blocked.
@@ -98,7 +105,6 @@ public class StaminaController
         maxStamina += valueToAdd;
     }
 
-
     /// <summary>
     /// Add value to current Stamina. Will not exced maxStamina
     /// </summary>
@@ -119,7 +125,6 @@ public class StaminaController
     {
         return currentStamina;
     }
-
 
     /// <summary>
     /// Constructor - will assign maxStamina,and set CurrentStamina to Max.

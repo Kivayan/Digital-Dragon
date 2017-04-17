@@ -56,6 +56,7 @@ public class UI_Script : MonoBehaviour
             QestDetal.color = C;
         }
 
+        /*
         //Obsługa Staminy
         if (Input.GetKey(KeyCode.LeftShift) && CurrentStamin > 0)
         {
@@ -75,6 +76,7 @@ public class UI_Script : MonoBehaviour
                 staminaSlider.value = CurrentStamin;
             }
         }
+        */
 
         if (damage)
         {
@@ -104,5 +106,10 @@ public class UI_Script : MonoBehaviour
     {
         CurrentHp += amount;
         healthSlider.value = CurrentHp;
+    }
+
+    public void UpdateStaminaGraphic(float staminaPercentageValue)
+    {
+        staminaSlider.value = staminaPercentageValue;
     }
 }

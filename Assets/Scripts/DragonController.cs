@@ -16,9 +16,9 @@ public class DragonController : MonoBehaviour
     public float jumpspeed = 10;
     public float currentStamina;
     public float gravity = 20f;
+
     private Vector3 movement = Vector3.zero;
     public GameObject UI;
-    public GameObject owca;
 
     public ColliderController tailCollider1;
     public ColliderController tailCollider2;
@@ -89,7 +89,6 @@ public class DragonController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             anim.SetTrigger("HapTrigger");
-            owca.GetComponent<Owca_script>().eat = true;
             jawTop.ColliderOn();
             jawBot.ColliderOn();
             effectAudio.clip = audioEat;

@@ -137,6 +137,8 @@
     <Compile Include="Assets\Scripts\ColliderController.cs" />
     <Compile Include="Assets\Scripts\DragonController.cs" />
     <Compile Include="Assets\Scripts\DragonController1.cs" />
+    <Compile Include="Assets\Scripts\DragonControlls\AnimatorHandler.cs" />
+    <Compile Include="Assets\Scripts\DragonControlls\AttackEngine.cs" />
     <Compile Include="Assets\Scripts\DragonControlls\Distance.cs" />
     <Compile Include="Assets\Scripts\DragonControlls\Flying.cs" />
     <Compile Include="Assets\Scripts\DragonControlls\Interfaces.cs" />
