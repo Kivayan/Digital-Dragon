@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Digital Dragon.Plugins", "Digital Dragon.Plugins.csproj", "{BBC95375-E44D-EE59-8B38-57EF3D35123C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Digital Dragon", "Digital Dragon.csproj", "{157C4B51-EBF1-BE55-4C11-DD2B0966F6F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Digital Dragon.Editor.Plugins", "Digital Dragon.Editor.Plugins.csproj", "{21C8D8C2-61D5-92BD-3690-F13AB1DCD3A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Digital Dragon.Editor", "Digital Dragon.Editor.csproj", "{4789A088-A746-22C4-F184-41FEED970867}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BBC95375-E44D-EE59-8B38-57EF3D35123C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBC95375-E44D-EE59-8B38-57EF3D35123C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBC95375-E44D-EE59-8B38-57EF3D35123C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBC95375-E44D-EE59-8B38-57EF3D35123C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{157C4B51-EBF1-BE55-4C11-DD2B0966F6F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{157C4B51-EBF1-BE55-4C11-DD2B0966F6F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{157C4B51-EBF1-BE55-4C11-DD2B0966F6F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{157C4B51-EBF1-BE55-4C11-DD2B0966F6F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21C8D8C2-61D5-92BD-3690-F13AB1DCD3A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21C8D8C2-61D5-92BD-3690-F13AB1DCD3A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21C8D8C2-61D5-92BD-3690-F13AB1DCD3A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21C8D8C2-61D5-92BD-3690-F13AB1DCD3A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4789A088-A746-22C4-F184-41FEED970867}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4789A088-A746-22C4-F184-41FEED970867}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4789A088-A746-22C4-F184-41FEED970867}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4789A088-A746-22C4-F184-41FEED970867}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
