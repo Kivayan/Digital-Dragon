@@ -168,6 +168,7 @@
     <Compile Include="Assets\Scripts\Samouczek.cs" />
     <Compile Include="Assets\Scripts\SoundManagement\FootSteps.cs" />
     <Compile Include="Assets\Scripts\SoundManagement\SoundManager.cs" />
+    <Compile Include="Assets\Scripts\Teleport_script.cs" />
     <Compile Include="Assets\Scripts\Testing\StamniaTester.cs" />
     <Compile Include="Assets\Scripts\UI_Script.cs" />
   </ItemGroup>
