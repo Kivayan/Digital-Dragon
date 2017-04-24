@@ -6,6 +6,9 @@ namespace movementEngine
     public class Walk : MonoBehaviour, IMovement
     {
         public float speed = 6.0F;
+        public float shiftSpeed;
+        public float currentSpeed;
+        public bool isSprinting = false;
 
         //good gravity and jumpspeed are 70/40
         public float jumpSpeed = 40;
@@ -23,12 +26,27 @@ namespace movementEngine
         private float XRotateNormalizeStartPoint;
         [Range(0, 5)] public float XBackToZeroSpeed;
 
+        private void MonitorSpeed()
+        {
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                currentSpeed = shiftSpeed;
+                isSprinting = true;
+            }
+            else
+            {
+                isSprinting = false;
+                currentSpeed = speed;
+            }
+        }
+
         public void Move()
         {
             ResetXRotation();
             Walking();
             Rotate();
             DebugInfo();
+            MonitorSpeed();
         }
 
         private void Walking()
@@ -39,6 +57,7 @@ namespace movementEngine
                 moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
                 moveDirection = transform.TransformDirection(moveDirection);
                 moveDirection *= speed;
+
                 if (Input.GetButton("Jump"))
                     moveDirection.y = jumpSpeed;
             }

@@ -23,7 +23,7 @@ public class FootSteps : MonoBehaviour
 
     private void SimpleWalkDetector()
     {
-        if(animHandler.IsMoving == true && !audio.isPlaying)
+        if(animHandler.IsMoving == true && !audio.isPlaying & animHandler.isFlying == false)
         {
             audio.volume = Random.Range(volumeRangeMin, volumeRangeMax);
             audio.pitch = Random.Range(pitchRangeMin, pitchRangeMax);

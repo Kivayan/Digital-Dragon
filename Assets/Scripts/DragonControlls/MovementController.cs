@@ -14,6 +14,7 @@ namespace movementEngine
         private Vector3 startingRotation;
 
         private CharacterController controller;
+        private AnimatorHandler anim;
 
         [Range(0.2f, 4f)] public float awaitSecondSpaceTime;
         private float flyTriggerTimer = 0f;
@@ -32,6 +33,7 @@ namespace movementEngine
             currentMovement.SetCurrentRotation(new Vector3(0, 0, 0));
             flightStamina = new Timer(startStaminaValue);
             controller = GetComponent<CharacterController>();
+            anim = GetComponent<AnimatorHandler>();
         }
 
         private void Update()
@@ -103,6 +105,7 @@ namespace movementEngine
             startingRotation = currentMovement.GetCurrentRotation();
             walk.SetCurrentRotation(startingRotation);
             currentMovement = walk;
+            anim.isFlying = false;
         }
 
         private void SwitchOnFly()
@@ -113,6 +116,7 @@ namespace movementEngine
             startingRotation = currentMovement.GetCurrentRotation();
             fly.SetCurrentRotation(startingRotation);
             currentMovement = fly;
+            anim.isFlying = true;
         }
 
         private void DebugInfo()
@@ -122,6 +126,8 @@ namespace movementEngine
             DebugPanel.Log("awaitingSecondSpace", "FlySwitchProperties", awaitingSecondSpace);
             DebugPanel.Log("startCount", "FlySwitchProperties", startCount);
             DebugPanel.Log("StaminaCoundown", "FlightParameters", flightStaminaCurrentValue);
+            DebugPanel.Log("Velocity", controller.velocity);
         }
+
     }
 }

@@ -10,10 +10,17 @@ public class AnimatorHandler : MonoBehaviour
 
     private bool isMoving;
     public bool IsMoving { get { return isMoving; } }
+    public bool isFlying = false;
 
     private bool isSprinting;
     public float speedMultiplierBase = 1f;
     public float speedMultiplierIncreased = 2f;
+    public float animationDumpingSpeed;
+
+    //-1 descending, 0 stationary, 1 ascending;
+    private float verticalMovement = 0;
+    private float horizontalMovement = 0;
+    private float directionMovement = 0;
 
     //Jump can optionally have another name
     private string jump;
@@ -33,7 +40,65 @@ public class AnimatorHandler : MonoBehaviour
     private void Update()
     {
         DetectMovement();
+        DetectMovementDirectionFly();
+        DetectMovementDirectionWalkSides();
+        DetectMovementDirectionWalkDirection();
+        DebugInfo();
     }
+
+    private void DetectMovementDirectionFly()
+    {
+        if (isFlying)
+        {
+            float y = controller.velocity.y;
+
+            if (y > 0)
+                verticalMovement = 1;
+            else if (y < 0)
+                verticalMovement = -1;
+            else
+                verticalMovement = 0;
+
+            anim.SetFloat("verticalMovement", verticalMovement);
+        }
+    }
+
+    private void DetectMovementDirectionWalkSides()
+    {
+        
+            if (Input.GetKey(KeyCode.D))
+                horizontalMovement = 1;
+            else if (Input.GetKey(KeyCode.A))
+                horizontalMovement = -1;
+            else
+                horizontalMovement = 0;
+
+
+            anim.SetFloat("horizontalMovement", horizontalMovement, 1f, Time.deltaTime * animationDumpingSpeed);
+
+    }
+
+    private void DetectMovementDirectionWalkDirection()
+    {
+        if (isFlying == false)
+        {
+            if (Input.GetKey(KeyCode.W))
+                directionMovement = 0.5f;
+            else if (Input.GetKey(KeyCode.S))
+                directionMovement = -1;
+            else
+                directionMovement = 0;
+
+            if (Input.GetKey(KeyCode.LeftShift))
+                directionMovement = 1;
+
+            anim.SetFloat("directionMovement", directionMovement, 1f, Time.deltaTime * animationDumpingSpeed);
+        }
+    }
+
+
+
+
 
     public void SpeedIncreased()
     {
@@ -78,5 +143,15 @@ public class AnimatorHandler : MonoBehaviour
             isMoving = true;
 
         anim.SetBool("isMoving", IsMoving);
+    }
+
+    private void DebugInfo()
+    {
+        DebugPanel.Log("isFlying", "anim", isFlying);
+        DebugPanel.Log("isMoving", "anim", isMoving);
+        DebugPanel.Log("verticalMovement", "anim", verticalMovement);
+        DebugPanel.Log("horizontalMovement", "anim", horizontalMovement);
+        DebugPanel.Log("directionMovement", "anim", directionMovement);
+
     }
 }
