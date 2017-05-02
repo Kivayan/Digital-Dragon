@@ -75,7 +75,7 @@ public class GameOver : MonoBehaviour {
     public void EndGame()
     {
         player.GetComponent<CharacterController>().enabled = false;
-        player.GetComponent<DragonController>().TriggerDanceAnimation();
+        //player.GetComponent<DragonController>().TriggerDanceAnimation();
         timerStop = true;
         overScreen.enabled = true;
 

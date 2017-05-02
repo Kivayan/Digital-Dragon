@@ -13,6 +13,8 @@ namespace movementEngine
         private float gravity = 0;
         private float endOfStaminaGravity = 60f;
 
+        private bool movementBlocked = false;
+
         public float distanceLimit;
         private bool limtBreached = false;
         private Vector3 moveDirection = Vector3.zero;
@@ -33,8 +35,12 @@ namespace movementEngine
 
         void IMovement.Move()
         {
-            Move();
-            Rotate();
+            if(!movementBlocked)
+            {
+                Move();
+                Rotate();
+            }
+            
             DebugInfo();
             UpdateDist();
         }
@@ -115,11 +121,17 @@ namespace movementEngine
         {
             XRotate = startingRotation.x;
             YRotate = startingRotation.y;
+            movementBlocked = false;
         }
 
         Vector3 IMovement.GetCurrentRotation()
         {
             return new Vector3(XRotate, YRotate, transform.rotation.z);
+        }
+
+        public void BlockMovement()
+        {
+            movementBlocked = true;
         }
     }
 }

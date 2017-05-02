@@ -10,6 +10,9 @@ namespace movementEngine
         private IMovement currentMovement;
         public IMovement walk;
         public IMovement fly;
+        private Distance dist;
+
+        public float landingDistance;
 
         private Vector3 startingRotation;
 
@@ -22,8 +25,10 @@ namespace movementEngine
         private bool startCount = false;
 
         private Timer flightStamina;
+        private Timer flySafeStartTimer;
         private float flightStaminaCurrentValue;
         public float startStaminaValue;
+        public float flySafeStart;
 
         private void Start()
         {
@@ -34,15 +39,19 @@ namespace movementEngine
             flightStamina = new Timer(startStaminaValue);
             controller = GetComponent<CharacterController>();
             anim = GetComponent<AnimatorHandler>();
+            dist = GetComponent<Distance>();
+            flySafeStartTimer = new Timer(flySafeStart);
         }
 
         private void Update()
         {
             flightStamina.TimerTracker();
+            flySafeStartTimer.TimerTracker();
             MonitorFly();
             SwitchMovementTypeSimple();
             currentMovement.Move();
             DebugInfo();
+            LandingDistanceTracker();
             // Debug.Log("Stamina = " + flightStaminaCurrentValue);
         }
 
@@ -63,7 +72,11 @@ namespace movementEngine
             if (flightStaminaCurrentValue <= 0 && currentMovement == fly)
             {
                 if (controller.isGrounded != true)
+                {
                     fly.EnableGravity();
+                    fly.BlockMovement();
+                }
+                    
                 else
                     SwitchOnWalk();
             }
@@ -117,6 +130,23 @@ namespace movementEngine
             fly.SetCurrentRotation(startingRotation);
             currentMovement = fly;
             anim.isFlying = true;
+            flySafeStartTimer.TimerOn();
+        }
+
+        private void LandingDistanceTracker()
+        {
+            if (currentMovement == fly)
+            {
+                if (dist.GetCurrentDistance() <= landingDistance && flySafeStartTimer.GetCurrentTimerValue() <= 0)
+                {
+                    Debug.Log("should land");
+
+                        if (controller.isGrounded != true)
+                            fly.EnableGravity();
+                        else
+                            SwitchOnWalk();
+                }
+            }
         }
 
         private void DebugInfo()

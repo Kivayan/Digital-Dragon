@@ -45,7 +45,7 @@ public class AttackEngine : MonoBehaviour
         //Arm Attack
         if (Input.GetKeyDown(armAttackKey))
         {
-            animHandler.TriggerAttack("CapTrigger");
+            animHandler.TriggerAttack("JumpAttack");
             armLeft.ColliderOn();
             armRight.ColliderOn();
             effectAudio.clip = audioFistHit;
@@ -66,9 +66,11 @@ public class AttackEngine : MonoBehaviour
         //Tail Attack
         if (Input.GetKeyDown(tailAttackKey))
         {
-            animHandler.TriggerAttack("TailTrigger");
+            animHandler.TriggerAttack("TailAttack");
             tailCollider1.ColliderOn();
-            tailCollider2.ColliderOn();
+            if(tailCollider2 != null)
+                tailCollider2.ColliderOn();
+
             effectAudio.clip = audioTailHit;
             effectAudio.Play();
         }

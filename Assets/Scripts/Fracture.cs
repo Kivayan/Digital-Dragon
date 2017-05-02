@@ -18,6 +18,7 @@ public class Fracture : MonoBehaviour
     {
         if (Col.gameObject.tag == "Smash")
         {
+            Debug.Log("hit");
             gameControler.GetComponent<GameOver>().MenDown(1);
             Destroy(gameObject);
 

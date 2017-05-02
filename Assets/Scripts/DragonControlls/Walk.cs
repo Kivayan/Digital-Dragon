@@ -9,6 +9,8 @@ namespace movementEngine
         public float shiftSpeed;
         public float currentSpeed;
         public bool isSprinting = false;
+        private AnimatorHandler anim;
+        private bool movementBlocked = false;
 
         //good gravity and jumpspeed are 70/40
         public float jumpSpeed = 40;
@@ -25,6 +27,11 @@ namespace movementEngine
         private float XRotate = 0;
         private float XRotateNormalizeStartPoint;
         [Range(0, 5)] public float XBackToZeroSpeed;
+
+        private void Start()
+        {
+            anim = GetComponent<AnimatorHandler>();
+        }
 
         private void MonitorSpeed()
         {
@@ -43,8 +50,13 @@ namespace movementEngine
         public void Move()
         {
             ResetXRotation();
-            Walking();
-            Rotate();
+
+            if (!movementBlocked)
+            {
+                Walking();
+                Rotate();
+            }
+            
             DebugInfo();
             MonitorSpeed();
         }
@@ -56,10 +68,15 @@ namespace movementEngine
             {
                 moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
                 moveDirection = transform.TransformDirection(moveDirection);
-                moveDirection *= speed;
+                moveDirection *= currentSpeed;
 
                 if (Input.GetButton("Jump"))
+                {
                     moveDirection.y = jumpSpeed;
+                    anim.isJumping = true;
+
+                }
+
             }
             moveDirection.y -= gravity * Time.deltaTime;
             controller.Move(moveDirection * Time.deltaTime);
@@ -110,6 +127,7 @@ namespace movementEngine
         {
             XRotate = startingRotation.x;
             YRotate = startingRotation.y;
+            movementBlocked = false;
         }
 
         Vector3 IMovement.GetCurrentRotation()
@@ -125,6 +143,11 @@ namespace movementEngine
         public void DisableGravity()
         {
             throw new NotImplementedException();
+        }
+
+        public void BlockMovement()
+        {
+            movementBlocked = true;
         }
     }
 }

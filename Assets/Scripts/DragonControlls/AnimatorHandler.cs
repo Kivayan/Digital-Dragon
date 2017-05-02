@@ -11,6 +11,7 @@ public class AnimatorHandler : MonoBehaviour
     private bool isMoving;
     public bool IsMoving { get { return isMoving; } }
     public bool isFlying = false;
+    public bool isJumping = false;
 
     private bool isSprinting;
     public float speedMultiplierBase = 1f;
@@ -44,6 +45,7 @@ public class AnimatorHandler : MonoBehaviour
         DetectMovementDirectionWalkSides();
         DetectMovementDirectionWalkDirection();
         DebugInfo();
+        DetectSpecificMovements();
     }
 
     private void DetectMovementDirectionFly()
@@ -59,7 +61,7 @@ public class AnimatorHandler : MonoBehaviour
             else
                 verticalMovement = 0;
 
-            anim.SetFloat("verticalMovement", verticalMovement);
+            anim.SetFloat("verticalMovement", verticalMovement, 1f, Time.deltaTime * animationDumpingSpeed);
         }
     }
 
@@ -96,6 +98,20 @@ public class AnimatorHandler : MonoBehaviour
         }
     }
 
+    private void DetectSpecificMovements()
+    {
+        if (isFlying)
+            anim.SetBool("isFlying", true);
+        else
+            anim.SetBool("isFlying", false);
+
+        if (isJumping)
+        {
+            TriggerJump();
+            isJumping = false;
+        }
+    }
+
 
 
 
@@ -120,9 +136,6 @@ public class AnimatorHandler : MonoBehaviour
 
     public void TriggerJump()
     {
-        if (jump != null || jump != "")
-            anim.SetTrigger(jump);
-        else
             anim.SetTrigger("jump");
     }
 

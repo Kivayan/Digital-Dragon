@@ -17,5 +17,6 @@ public interface IMovement
     //necessary for flight
     void EnableGravity();
     void DisableGravity();
+    void BlockMovement();
  
 }

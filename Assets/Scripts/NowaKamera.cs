@@ -18,7 +18,7 @@ public class NowaKamera : MonoBehaviour {
 	void Start ()
     {
         anim = GetComponentInParent<Animator>();
-        playerAnim = FindObjectOfType<CharacterController>().gameObject.GetComponent<Animator>();
+        playerAnim = FindObjectOfType<CharacterController>().gameObject.GetComponentInChildren<Animator>();
         camera.SetActive(false);
         firstTime = false;
 	}

@@ -132,7 +132,6 @@
     <Compile Include="Assets\PostProcessing\Runtime\Utils\MaterialFactory.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Utils\RenderTextureFactory.cs" />
     <Compile Include="Assets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
-    <Compile Include="Assets\Scripts\AIBehaviour.cs" />
     <Compile Include="Assets\Scripts\Camera_menu.cs" />
     <Compile Include="Assets\Scripts\ColliderController.cs" />
     <Compile Include="Assets\Scripts\DragonController.cs" />
@@ -146,6 +145,8 @@
     <Compile Include="Assets\Scripts\DragonControlls\StaminaController.cs" />
     <Compile Include="Assets\Scripts\DragonControlls\Timer.cs" />
     <Compile Include="Assets\Scripts\DragonControlls\Walk.cs" />
+    <Compile Include="Assets\Scripts\Enemies\AIBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Enemies\AIHealth.cs" />
     <Compile Include="Assets\Scripts\ExpCollector.cs" />
     <Compile Include="Assets\Scripts\Experience.cs" />
     <Compile Include="Assets\Scripts\Fire_Camp.cs" />
