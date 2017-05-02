@@ -36,6 +36,7 @@ public class GameOver : MonoBehaviour {
         timer = 0f;
         soldierNumer = 0f;
         pickUpNumber = 0f;
+        Cursor.visible = false;
     }
 	
 	// Update is called once per frame
@@ -90,4 +91,7 @@ public class GameOver : MonoBehaviour {
     {
         pickUpNumber++;
     }
+
+
+    
 }
